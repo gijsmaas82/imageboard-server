@@ -18,7 +18,7 @@ router.post('/login', (req, res, next) => {
           res.status(400).send({ message: 'user with that name does not exist'})
         } else if (bcrypt.compareSync(req.body.password, entity.password)) {
           res.send({
-            jwt: toJWT({ userId: 1 })
+            jwt: toJWT({ userId: entity.id })
           })
         } else {
           res.status(400).send({ message: 'password was incorrect'})
