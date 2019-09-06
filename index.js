@@ -1,9 +1,15 @@
 const express = require('express')
-const db = require('./db')
-const Image = require('./image/model')
+const bodyParser = require('body-parser')
+const cors = require('cors')
 const imageRouter = require('./image/router')
 
 const app = express()
+
+const corsMiddleware = cors()
+app.use(corsMiddleware)
+
+const parserMiddleware = bodyParser.json()
+app.use(parserMiddleware)
 
 const port = process.env.PORT || 4000
 
